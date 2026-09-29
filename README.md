@@ -4,6 +4,9 @@ A method for making launch motion films for real companies with Claude Code. Eac
 built from a brand kit by a fresh Claude session that writes its own engine and every move. This repo holds the rules,
 the prompt, the templates and two scripts; each film lives in its own folder outside it.
 
+The quickest start: open this folder in Claude Code and ask "how do I make a film with this?". It walks you through
+the steps below and runs the ones you want done.
+
 ## What you need
 
 - [Claude Code](https://claude.com/claude-code), with the most capable model you have available.
@@ -42,7 +45,8 @@ the prompt, the templates and two scripts; each film lives in its own folder out
    python3 scripts/compare.py ~/runs/acme-01/out/film.mp4 --ref reference.mp4
    ```
 
-   It prints pace and loudness for both films side by side, and writes a contact sheet of each to `compare/`.
+   It prints pace and loudness for both films side by side, and writes a contact sheet of each to a `compare/` folder
+   next to your film.
 
 ## Giving notes
 

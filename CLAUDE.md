@@ -3,6 +3,25 @@
 A method for making launch motion films for real companies with Claude Code. `README.md` has the step-by-step; this
 file holds the rules. "The director" is the person who reviews the film and gives notes.
 
+## When someone asks how to use this repo
+
+Walk them through making a film, one step at a time, and do the steps they want done:
+
+1. **Run folder:** `scripts/new-run.sh <name>` makes `~/runs/<name>-01/`. Add a sound library folder as a second
+   argument if they have one.
+2. **Brand kit:** build `brand/` with them from `templates/brand-kit.md`. Capture the company's pages and text, quote
+   its claims word for word, copy colours and type from the live CSS, and collect the logo, fonts and product
+   screenshots. Downloads need their OK.
+3. **Build session:** give them the launch command and the prompt from `prompts/launch-film.md`, with their details
+   filled in. The film is built by that fresh session, not this one (rule 6).
+4. **Stops:** at the pitch and at the rough cut, help them read the frames or the cut and put their notes in their
+   own words (rule 8).
+5. **Compare:** when the final is in, run `scripts/compare.py` against a reference film they rate and report the
+   numbers plainly (rule 5).
+
+If they want to change the rules, edit this file and `prompts/launch-film.md` together, so the rules the build session
+gets stay in step with these.
+
 ## Rules for every film
 
 1. **Everything is a motion piece.** Motion graphics come first: big kinetic type, one idea at a time. A film can show

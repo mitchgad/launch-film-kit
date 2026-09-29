@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Put a film next to a reference film: pace, loudness over time and one-frame-per-second contact sheets.
 
-    python3 scripts/compare.py out/film.mp4 --ref reference.mp4 --out compare/
+    python3 scripts/compare.py out/film.mp4 --ref reference.mp4    (contact sheets go to out/compare/)
 
 Pace is the share of the picture that changes from one frame to the next: pixels whose brightness moves by more than
 10%, measured on a 160x90 greyscale copy, averaged over each second. A second under 2% counts as nearly still. A frozen
@@ -131,9 +131,9 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("film")
     ap.add_argument("--ref", help="a reference film to compare against")
-    ap.add_argument("--out", default="compare", help="folder for the contact sheets (default: compare/)")
+    ap.add_argument("--out", help="folder for the contact sheets (default: compare/ next to the film)")
     args = ap.parse_args()
-    out_dir = Path(args.out)
+    out_dir = Path(args.out) if args.out else Path(args.film).resolve().parent / "compare"
     out_dir.mkdir(parents=True, exist_ok=True)
     report([measure(p, out_dir) for p in [args.film] + ([args.ref] if args.ref else [])])
 
