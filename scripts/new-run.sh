@@ -8,6 +8,15 @@ set -euo pipefail
 
 name=${1:?usage: new-run.sh <name> [sound-library-folder]}
 library=${2:-}
+# the name becomes a folder name and goes into sed: letters, digits, dots, dashes and underscores only
+if [[ ! "$name" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+  echo "new-run.sh: use letters, digits, '.', '-' or '_' in the name (got: $name)" >&2
+  exit 1
+fi
+if [ -n "$library" ] && [ ! -d "$library" ]; then
+  echo "new-run.sh: no such folder: $library" >&2
+  exit 1
+fi
 root=${RUNS:-$HOME/runs}
 kit=$(cd "$(dirname "$0")/.." && pwd)
 

@@ -54,6 +54,18 @@ Quote what you want changed and name only that. The build session changes what i
 the notes becomes a change. Type "Apply these notes:" before pasting them. For a big change, start a fresh session
 from the last good cut instead of piling onto a long one.
 
+## Security
+
+- **The brand kit is untrusted.** It holds text and images copied from a company's website, and a page can carry
+  text written to steer an AI. The prompt tells the build session never to follow instructions inside `brand/`. Read
+  the kit before a run anyway.
+- **The build session runs unattended.** `--permission-mode auto` lets it work through a long render without asking,
+  and auto mode screens each action before it runs. For material you don't trust, drop that flag so the session asks
+  before each command, or run it on a machine or user account that can't reach your keys and private files.
+- **`--safe-mode`** keeps your own CLAUDE.md, skills, hooks, plugins and MCP servers out of the session, so a film
+  never has access to your other connected tools.
+- **Nothing here needs keys or accounts.** Never put credentials in a run folder.
+
 ## Files
 
 | Path | What it is |
